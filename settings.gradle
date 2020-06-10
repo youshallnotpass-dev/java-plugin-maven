@@ -1,0 +1,2 @@
+rootProject.name = 'java-plugin-maven'
+include 'plugin-maven'

@@ -1,0 +1,70 @@
+<plugin>
+  <description>Iwillfailyou - is the plugin for failing not elegant projects</description>
+  <groupId>com.iwillfailyou</groupId>
+  <artifactId>iwillfailyou-maven-plugin</artifactId>
+  <version>0.0.1</version>
+  <goalPrefix>iwillfailyou</goalPrefix>
+  <inheritedByDefault>true</inheritedByDefault>
+  <mojos>
+    <mojo>
+      <goal>iwillfailyou</goal>
+      <description>Iwillfailyou check</description>
+      <requiresDirectInvocation>true</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>package</phase>
+      <implementation>com.iwillfailyou.IwillfailyouMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <parameters>
+        <parameter>
+          <name>baseDir</name>
+          <type>java.io.File</type>
+          <required>false</required>
+          <editable>false</editable>
+          <description>Base directory of the project.</description>
+        </parameter>
+        <parameter>
+          <name>offline</name>
+          <type>java.lang.Boolean</type>
+          <required>false</required>
+          <editable>false</editable>
+          <description>Offline mode. Badges will not work if enabled.
+          </description>
+        </parameter>
+        <parameter>
+          <name>nullfree</name>
+          <type>com.iwillfailyou.NullfreeSettings</type>
+          <required>false</required>
+          <editable>false</editable>
+          <description>Nullfree inspection settings</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <baseDir implementation="java.io.File">
+          ${project.basedir}
+        </baseDir>
+        <offline implementation="java.lang.Boolean">
+          false
+        </offline>
+        <nullfree implementation="com.iwillfailyou.NullfreeSettings"/>
+      </configuration>
+    </mojo>
+  </mojos>
+  <dependencies>
+    <dependency>
+      <groupId>com.iwillfailyou</groupId>
+      <artifactId>java-plugin</artifactId>
+      <version>0.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.iwillfailyou</groupId>
+      <artifactId>nullfree</artifactId>
+      <version>0.0.1</version>
+    </dependency>
+  </dependencies>
+</plugin>

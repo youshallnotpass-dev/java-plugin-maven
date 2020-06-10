@@ -1,0 +1,18 @@
+plugins {
+    id 'com.iwillfailyou' version '0.0.2'
+}
+
+iwillfailyou {
+    nullfree {
+        skipComparisions = true
+    }
+}
+
+allprojects {
+    ext {
+        group = 'com.iwillfailyou'
+    }
+    repositories {
+        mavenCentral()
+    }
+}
