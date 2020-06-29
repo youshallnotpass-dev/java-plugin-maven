@@ -7,6 +7,7 @@ import com.iwillfailyou.plugin.IwfyException;
 import com.iwillfailyou.plugin.IwfyPlugin;
 import com.iwillfailyou.plugin.IwfyUrls;
 import com.iwillfailyou.plugin.PublicInspection;
+import com.iwillfailyou.staticfree.StaticfreeInspection;
 import com.nikialeksey.goo.Goo;
 import com.nikialeksey.goo.GooException;
 import com.nikialeksey.goo.Origin;
@@ -32,11 +33,17 @@ public class IwillfailyouMojo extends AbstractMojo {
     @Parameter(readonly = true)
     @Nullable
     private NullfreeSettings nullfree;
+    @Parameter(readonly = true)
+    @Nullable
+    private StaticfreeSettings staticfree;
 
     @Override
     public void execute() throws MojoExecutionException {
         if (nullfree == null) {
             nullfree = new NullfreeSettings();
+        }
+        if (staticfree == null) {
+            staticfree = new StaticfreeSettings();
         }
 
         final List<Inspection> inspections = new ListOf<>(
@@ -44,6 +51,10 @@ public class IwillfailyouMojo extends AbstractMojo {
                 new JavaSourceFileFactory(),
                 nullfree.getSkipComparisions(),
                 nullfree.getThreshold()
+            ),
+            new StaticfreeInspection(
+                new com.iwillfailyou.staticfree.sources.java.JavaSourceFileFactory(),
+                staticfree.getThreshold()
             )
         );
         try {
