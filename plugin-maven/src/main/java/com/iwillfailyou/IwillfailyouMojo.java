@@ -1,19 +1,20 @@
 package com.iwillfailyou;
 
-import com.iwillfailyou.nullfree.NullfreeInspection;
-import com.iwillfailyou.nullfree.sources.java.JavaSourceFileFactory;
+import com.iwillfailyou.inspection.sources.SourceMask;
+import com.iwillfailyou.inspection.sources.java.JavaSourceMask;
+import com.iwillfailyou.inspections.allfinal.Allfinal;
+import com.iwillfailyou.inspections.nullfree.Nullfree;
+import com.iwillfailyou.inspections.staticfree.Staticfree;
 import com.iwillfailyou.plugin.Inspection;
 import com.iwillfailyou.plugin.IwfyException;
 import com.iwillfailyou.plugin.IwfyPlugin;
 import com.iwillfailyou.plugin.IwfyUrls;
 import com.iwillfailyou.plugin.PublicInspection;
-import com.iwillfailyou.staticfree.StaticfreeInspection;
 import com.nikialeksey.goo.Goo;
 import com.nikialeksey.goo.GooException;
 import com.nikialeksey.goo.Origin;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.cactoos.list.ListOf;
@@ -24,18 +25,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Mojo(name = "iwillfailyou", threadSafe = true)
-public class IwillfailyouMojo extends AbstractMojo {
+public final class IwillfailyouMojo extends AbstractMojo {
 
     @Parameter(readonly = true, defaultValue = "${project.basedir}")
+    @SuppressWarnings("allfinal")
     private File baseDir;
     @Parameter(readonly = true, defaultValue = "false")
+    @SuppressWarnings("allfinal")
     private boolean offline;
     @Parameter(readonly = true)
     @Nullable
+    @SuppressWarnings("allfinal")
     private NullfreeSettings nullfree;
     @Parameter(readonly = true)
     @Nullable
+    @SuppressWarnings("allfinal")
     private StaticfreeSettings staticfree;
+    @Parameter(readonly = true)
+    @Nullable
+    @SuppressWarnings("allfinal")
+    private AllfinalSettings allfinal;
 
     @Override
     public void execute() throws MojoExecutionException {
@@ -45,16 +54,24 @@ public class IwillfailyouMojo extends AbstractMojo {
         if (staticfree == null) {
             staticfree = new StaticfreeSettings();
         }
+        if (allfinal == null) {
+            allfinal = new AllfinalSettings();
+        }
 
+        final SourceMask sourceMask = new JavaSourceMask();
         final List<Inspection> inspections = new ListOf<>(
-            new NullfreeInspection(
-                new JavaSourceFileFactory(),
+            new Nullfree(
+                sourceMask,
                 nullfree.getSkipComparisions(),
                 nullfree.getThreshold()
             ),
-            new StaticfreeInspection(
-                new com.iwillfailyou.staticfree.sources.java.JavaSourceFileFactory(),
+            new Staticfree(
+                sourceMask,
                 staticfree.getThreshold()
+            ),
+            new Allfinal(
+                sourceMask,
+                allfinal.getThreshold()
             )
         );
         try {
@@ -78,7 +95,7 @@ public class IwillfailyouMojo extends AbstractMojo {
                             )
                         );
                     }
-                } catch (GooException e) {
+                } catch (final GooException e) {
                     throw new IwfyException(
                         "Could not get the origin for git repo. You can " +
                             "use offline version, if you have not git " +

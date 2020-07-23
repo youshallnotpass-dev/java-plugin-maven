@@ -3,7 +3,7 @@ package com.iwillfailyou;
 import java.util.Arrays;
 import java.util.List;
 
-public class NullfreeSettings {
+public final class NullfreeSettings {
     private final List<Boolean> skipComparisions;
     private final List<Integer> threshold;
 

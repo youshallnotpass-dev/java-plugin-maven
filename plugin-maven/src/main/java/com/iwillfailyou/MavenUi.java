@@ -3,7 +3,7 @@ package com.iwillfailyou;
 import com.iwillfailyou.plugin.Ui;
 import org.apache.maven.plugin.logging.Log;
 
-public class MavenUi implements Ui {
+public final class MavenUi implements Ui {
 
     private final Log log;
 
