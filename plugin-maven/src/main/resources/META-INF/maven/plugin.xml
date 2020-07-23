@@ -2,7 +2,7 @@
   <description>Iwillfailyou - is the plugin for failing not elegant projects</description>
   <groupId>com.iwillfailyou</groupId>
   <artifactId>iwillfailyou-maven-plugin</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <goalPrefix>iwillfailyou</goalPrefix>
   <inheritedByDefault>true</inheritedByDefault>
   <mojos>
@@ -50,6 +50,13 @@
           <editable>false</editable>
           <description>Staticfree inspection settings</description>
         </parameter>
+        <parameter>
+          <name>allfinal</name>
+          <type>com.iwillfailyou.AllfinalSettings</type>
+          <required>false</required>
+          <editable>false</editable>
+          <description>Allfinal inspection settings</description>
+        </parameter>
       </parameters>
       <configuration>
         <baseDir implementation="java.io.File">
@@ -60,6 +67,7 @@
         </offline>
         <nullfree implementation="com.iwillfailyou.NullfreeSettings"/>
         <staticfree implementation="com.iwillfailyou.StaticfreeSettings"/>
+        <allfinal implementation="com.iwillfailyou.AllfinalSettings"/>
       </configuration>
     </mojo>
   </mojos>
@@ -71,13 +79,8 @@
     </dependency>
     <dependency>
       <groupId>com.iwillfailyou</groupId>
-      <artifactId>nullfree</artifactId>
-      <version>0.0.3</version>
-    </dependency>
-    <dependency>
-      <groupId>com.iwillfailyou</groupId>
-      <artifactId>staticfree</artifactId>
-      <version>0.0.3</version>
+      <artifactId>java-inspections</artifactId>
+      <version>0.0.1</version>
     </dependency>
   </dependencies>
 </plugin>

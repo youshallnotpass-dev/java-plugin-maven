@@ -3,16 +3,16 @@ package com.iwillfailyou;
 import java.util.Arrays;
 import java.util.List;
 
-public final class StaticfreeSettings {
+public final class AllfinalSettings {
     private final List<Integer> threshold;
 
-    public StaticfreeSettings() {
+    public AllfinalSettings() {
         this(
             Arrays.asList(0)
         );
     }
 
-    public StaticfreeSettings(
+    public AllfinalSettings(
         final List<Integer> threshold
     ) {
         this.threshold = threshold;
