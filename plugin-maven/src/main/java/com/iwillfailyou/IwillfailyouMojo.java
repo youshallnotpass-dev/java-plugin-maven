@@ -71,7 +71,8 @@ public final class IwillfailyouMojo extends AbstractMojo {
             ),
             new Allfinal(
                 sourceMask,
-                allfinal.getThreshold()
+                allfinal.getThreshold(),
+                allfinal.getSkipInterfaceMethodParams()
             )
         );
         try {
