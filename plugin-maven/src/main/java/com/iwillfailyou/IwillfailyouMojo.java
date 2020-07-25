@@ -3,6 +3,7 @@ package com.iwillfailyou;
 import com.iwillfailyou.inspection.sources.SourceMask;
 import com.iwillfailyou.inspection.sources.java.JavaSourceMask;
 import com.iwillfailyou.inspections.allfinal.Allfinal;
+import com.iwillfailyou.inspections.allpublic.Allpublic;
 import com.iwillfailyou.inspections.nullfree.Nullfree;
 import com.iwillfailyou.inspections.staticfree.Staticfree;
 import com.iwillfailyou.plugin.Inspection;
@@ -45,6 +46,10 @@ public final class IwillfailyouMojo extends AbstractMojo {
     @Nullable
     @SuppressWarnings("allfinal")
     private AllfinalSettings allfinal;
+    @Parameter(readonly = true)
+    @Nullable
+    @SuppressWarnings("allfinal")
+    private AllpublicSettings allpublic;
 
     @Override
     public void execute() throws MojoExecutionException {
@@ -56,6 +61,9 @@ public final class IwillfailyouMojo extends AbstractMojo {
         }
         if (allfinal == null) {
             allfinal = new AllfinalSettings();
+        }
+        if (allpublic == null) {
+            allpublic = new AllpublicSettings();
         }
 
         final SourceMask sourceMask = new JavaSourceMask();
@@ -72,7 +80,12 @@ public final class IwillfailyouMojo extends AbstractMojo {
             new Allfinal(
                 sourceMask,
                 allfinal.getThreshold(),
-                allfinal.getSkipInterfaceMethodParams()
+                allfinal.getSkipInterfaceMethodParams(),
+                allfinal.getSkipLambdaParams()
+            ),
+            new Allpublic(
+                sourceMask,
+                allpublic.getThreshold()
             )
         );
         try {

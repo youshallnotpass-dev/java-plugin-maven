@@ -6,20 +6,24 @@ import java.util.List;
 public final class AllfinalSettings {
     private final List<Integer> threshold;
     private final List<Boolean> skipInterfaceMethodParams;
+    private final List<Boolean> skipLambdaParams;
 
     public AllfinalSettings() {
         this(
             Arrays.asList(0),
-            Arrays.asList(true)
+            Arrays.asList(true),
+            Arrays.asList(false)
         );
     }
 
     public AllfinalSettings(
         final List<Integer> threshold,
-        final List<Boolean> skipInterfaceMethodParams
+        final List<Boolean> skipInterfaceMethodParams,
+        final List<Boolean> skipLambdaParams
     ) {
         this.threshold = threshold;
         this.skipInterfaceMethodParams = skipInterfaceMethodParams;
+        this.skipLambdaParams = skipLambdaParams;
     }
 
     public int getThreshold() {
@@ -36,5 +40,13 @@ public final class AllfinalSettings {
 
     public void setSkipInterfaceMethodParams(final boolean skipInterfaceMethodParams) {
         this.skipInterfaceMethodParams.set(0, skipInterfaceMethodParams);
+    }
+
+    public boolean getSkipLambdaParams() {
+        return skipLambdaParams.get(0);
+    }
+
+    public void setSkipLambdaParams(final boolean skipLambdaParams) {
+        this.skipLambdaParams.set(0, skipLambdaParams);
     }
 }
