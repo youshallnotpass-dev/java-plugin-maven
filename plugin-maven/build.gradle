@@ -8,7 +8,7 @@ group = ext.group
 
 dependencies {
     implementation 'com.iwillfailyou:java-plugin:0.0.3'
-    implementation 'com.iwillfailyou:java-inspections:0.3.1'
+    implementation 'com.iwillfailyou:java-inspections:0.3.2'
     implementation 'org.apache.maven.plugin-tools:maven-plugin-annotations:3.6.0'
     implementation 'org.apache.maven:maven-plugin-api:3.6.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -28,7 +28,7 @@ if (project.rootProject.file('local.properties').exists()) {
         siteUrl = 'https://github.com/iwillfailyou/java-plugin-maven'
         gitUrl = 'https://github.com/iwillfailyou/java-plugin-maven.git'
 
-        libraryVersion = '0.1.0'
+        libraryVersion = '0.1.1'
 
         developerId = 'nikialeksey'
         developerName = 'Alexey Nikitin'
@@ -103,7 +103,7 @@ if (project.rootProject.file('local.properties').exists()) {
                     dependencyNode = dependenciesNode.appendNode('dependency')
                     dependencyNode.appendNode('groupId', 'com.iwillfailyou')
                     dependencyNode.appendNode('artifactId', 'java-inspections')
-                    dependencyNode.appendNode('version', '0.3.1')
+                    dependencyNode.appendNode('version', '0.3.2')
                 }
             }
         }
