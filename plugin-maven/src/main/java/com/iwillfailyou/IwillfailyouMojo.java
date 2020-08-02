@@ -1,11 +1,5 @@
 package com.iwillfailyou;
 
-import com.iwillfailyou.inspection.sources.SourceMask;
-import com.iwillfailyou.inspection.sources.java.JavaSourceMask;
-import com.iwillfailyou.inspections.allfinal.Allfinal;
-import com.iwillfailyou.inspections.allpublic.Allpublic;
-import com.iwillfailyou.inspections.nullfree.Nullfree;
-import com.iwillfailyou.inspections.staticfree.Staticfree;
 import com.iwillfailyou.plugin.Inspection;
 import com.iwillfailyou.plugin.IwfyException;
 import com.iwillfailyou.plugin.IwfyPlugin;
@@ -66,27 +60,11 @@ public final class IwillfailyouMojo extends AbstractMojo {
             allpublic = new AllpublicSettings();
         }
 
-        final SourceMask sourceMask = new JavaSourceMask();
         final List<Inspection> inspections = new ListOf<>(
-            new Nullfree(
-                sourceMask,
-                nullfree.getSkipComparisions(),
-                nullfree.getThreshold()
-            ),
-            new Staticfree(
-                sourceMask,
-                staticfree.getThreshold()
-            ),
-            new Allfinal(
-                sourceMask,
-                allfinal.getThreshold(),
-                allfinal.getSkipInterfaceMethodParams(),
-                allfinal.getSkipLambdaParams()
-            ),
-            new Allpublic(
-                sourceMask,
-                allpublic.getThreshold()
-            )
+            nullfree.inspection(),
+            staticfree.inspection(),
+            allfinal.inspection(),
+            allpublic.inspection()
         );
         try {
             final List<Inspection> wrapped;
