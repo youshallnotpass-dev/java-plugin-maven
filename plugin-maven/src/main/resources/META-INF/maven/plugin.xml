@@ -2,7 +2,7 @@
   <description>Iwillfailyou - is the plugin for failing not elegant projects</description>
   <groupId>com.iwillfailyou</groupId>
   <artifactId>iwillfailyou-maven-plugin</artifactId>
-  <version>0.2.0</version>
+  <version>0.4.0</version>
   <goalPrefix>iwillfailyou</goalPrefix>
   <inheritedByDefault>true</inheritedByDefault>
   <mojos>
@@ -33,36 +33,56 @@
           <type>java.lang.Boolean</type>
           <required>false</required>
           <editable>false</editable>
-          <description>Offline mode. Badges will not work if enabled.
-          </description>
+          <description>Offline mode. Badges will not work if enabled.</description>
+        </parameter>
+        <parameter>
+          <name>exclude</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>false</editable>
+          <description>Global exclude patterns.</description>
         </parameter>
         <parameter>
           <name>nullfree</name>
-          <type>com.iwillfailyou.NullfreeSettings</type>
+          <type>com.iwillfailyou.inspections.NullfreeSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>Nullfree inspection settings</description>
         </parameter>
         <parameter>
           <name>staticfree</name>
-          <type>com.iwillfailyou.StaticfreeSettings</type>
+          <type>com.iwillfailyou.inspections.StaticfreeSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>Staticfree inspection settings</description>
         </parameter>
         <parameter>
           <name>allfinal</name>
-          <type>com.iwillfailyou.AllfinalSettings</type>
+          <type>com.iwillfailyou.inspections.AllfinalSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>Allfinal inspection settings</description>
         </parameter>
         <parameter>
           <name>allpublic</name>
-          <type>com.iwillfailyou.AllpublicSettings</type>
+          <type>com.iwillfailyou.inspections.AllpublicSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>Allpublic inspection settings</description>
+        </parameter>
+        <parameter>
+          <name>setterfree</name>
+          <type>com.iwillfailyou.inspections.SetterFreeSettings</type>
+          <required>false</required>
+          <editable>false</editable>
+          <description>SetterFree inspection settings</description>
+        </parameter>
+        <parameter>
+          <name>nomultiplereturn</name>
+          <type>com.iwillfailyou.inspections.NoMultipleReturnSettings</type>
+          <required>false</required>
+          <editable>false</editable>
+          <description>NoMultipleReturn inspection settings</description>
         </parameter>
       </parameters>
       <configuration>
@@ -72,10 +92,13 @@
         <offline implementation="java.lang.Boolean">
           false
         </offline>
-        <nullfree implementation="com.iwillfailyou.NullfreeSettings"/>
-        <staticfree implementation="com.iwillfailyou.StaticfreeSettings"/>
-        <allfinal implementation="com.iwillfailyou.AllfinalSettings"/>
-        <allpublic implementation="com.iwillfailyou.AllpublicSettings"/>
+        <exclude implementation="java.util.ArrayList"/>
+        <nullfree implementation="com.iwillfailyou.inspections.NullfreeSettings"/>
+        <staticfree implementation="com.iwillfailyou.inspections.StaticfreeSettings"/>
+        <allfinal implementation="com.iwillfailyou.inspections.AllfinalSettings"/>
+        <allpublic implementation="com.iwillfailyou.inspections.AllpublicSettings"/>
+        <setterfree implementation="com.iwillfailyou.inspections.SetterFreeSettings"/>
+        <nomultiplereturn implementation="com.iwillfailyou.inspections.NoMultipleReturnSettings"/>
       </configuration>
     </mojo>
   </mojos>
@@ -88,7 +111,7 @@
     <dependency>
       <groupId>com.iwillfailyou</groupId>
       <artifactId>java-inspections</artifactId>
-      <version>0.4.0</version>
+      <version>0.7.0</version>
     </dependency>
   </dependencies>
 </plugin>
