@@ -1,5 +1,12 @@
 package com.iwillfailyou;
 
+import com.iwillfailyou.inspections.AllfinalSettings;
+import com.iwillfailyou.inspections.AllpublicSettings;
+import com.iwillfailyou.inspections.InspectionSettings;
+import com.iwillfailyou.inspections.NoMultipleReturnSettings;
+import com.iwillfailyou.inspections.NullfreeSettings;
+import com.iwillfailyou.inspections.SetterFreeSettings;
+import com.iwillfailyou.inspections.StaticfreeSettings;
 import com.iwillfailyou.plugin.Inspection;
 import com.iwillfailyou.plugin.IwfyException;
 import com.iwillfailyou.plugin.IwfyPlugin;
@@ -12,7 +19,9 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.cactoos.func.SolidFunc;
 import org.cactoos.list.ListOf;
+import org.cactoos.list.Mapped;
 
 import javax.annotation.Nullable;
 import java.io.File;
@@ -28,6 +37,9 @@ public final class IwillfailyouMojo extends AbstractMojo {
     @Parameter(readonly = true, defaultValue = "false")
     @SuppressWarnings("allfinal")
     private boolean offline;
+    @Parameter(readonly = true, defaultValue = "[]")
+    @SuppressWarnings("allfinal")
+    private List<String> exclude;
     @Parameter(readonly = true)
     @Nullable
     @SuppressWarnings("allfinal")
@@ -44,9 +56,20 @@ public final class IwillfailyouMojo extends AbstractMojo {
     @Nullable
     @SuppressWarnings("allfinal")
     private AllpublicSettings allpublic;
+    @Parameter(readonly = true)
+    @Nullable
+    @SuppressWarnings("allfinal")
+    private SetterFreeSettings setterFree;
+    @Parameter(readonly = true)
+    @Nullable
+    @SuppressWarnings("allfinal")
+    private NoMultipleReturnSettings noMultipleReturn;
 
     @Override
     public void execute() throws MojoExecutionException {
+        if (exclude == null) {
+            exclude = new ArrayList<>();
+        }
         if (nullfree == null) {
             nullfree = new NullfreeSettings();
         }
@@ -59,12 +82,28 @@ public final class IwillfailyouMojo extends AbstractMojo {
         if (allpublic == null) {
             allpublic = new AllpublicSettings();
         }
+        if (setterFree == null) {
+            setterFree = new SetterFreeSettings();
+        }
+        if (noMultipleReturn == null) {
+            noMultipleReturn = new NoMultipleReturnSettings();
+        }
 
-        final List<Inspection> inspections = new ListOf<>(
-            nullfree.inspection(),
-            staticfree.inspection(),
-            allfinal.inspection(),
-            allpublic.inspection()
+        final List<InspectionSettings> inspectionSettings = new ListOf<>(
+            nullfree,
+            staticfree,
+            allfinal,
+            allpublic,
+            setterFree,
+            noMultipleReturn
+        );
+
+        for (final InspectionSettings inspectionSetting : inspectionSettings) {
+            inspectionSetting.inheritExclude(exclude);
+        }
+        final List<Inspection> inspections = new Mapped<>(
+            new SolidFunc<>(InspectionSettings::inspection),
+            inspectionSettings
         );
         try {
             final List<Inspection> wrapped;
