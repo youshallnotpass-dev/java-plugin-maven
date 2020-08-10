@@ -59,11 +59,11 @@ public final class IwillfailyouMojo extends AbstractMojo {
     @Parameter(readonly = true)
     @Nullable
     @SuppressWarnings("allfinal")
-    private SetterFreeSettings setterFree;
+    private SetterFreeSettings setterfree;
     @Parameter(readonly = true)
     @Nullable
     @SuppressWarnings("allfinal")
-    private NoMultipleReturnSettings noMultipleReturn;
+    private NoMultipleReturnSettings nomultiplereturn;
 
     @Override
     public void execute() throws MojoExecutionException {
@@ -82,11 +82,11 @@ public final class IwillfailyouMojo extends AbstractMojo {
         if (allpublic == null) {
             allpublic = new AllpublicSettings();
         }
-        if (setterFree == null) {
-            setterFree = new SetterFreeSettings();
+        if (setterfree == null) {
+            setterfree = new SetterFreeSettings();
         }
-        if (noMultipleReturn == null) {
-            noMultipleReturn = new NoMultipleReturnSettings();
+        if (nomultiplereturn == null) {
+            nomultiplereturn = new NoMultipleReturnSettings();
         }
 
         final List<InspectionSettings> inspectionSettings = new ListOf<>(
@@ -94,8 +94,8 @@ public final class IwillfailyouMojo extends AbstractMojo {
             staticfree,
             allfinal,
             allpublic,
-            setterFree,
-            noMultipleReturn
+            setterfree,
+            nomultiplereturn
         );
 
         for (final InspectionSettings inspectionSetting : inspectionSettings) {
