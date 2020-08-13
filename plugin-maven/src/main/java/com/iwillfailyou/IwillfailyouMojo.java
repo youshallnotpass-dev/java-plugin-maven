@@ -67,7 +67,7 @@ public final class IwillfailyouMojo extends AbstractMojo {
     private NoMultipleReturnSettings nomultiplereturn;
     @Parameter(readonly = true)
     @Nullable
-    @SuppressWarnings("inheritancefree")
+    @SuppressWarnings("allfinal")
     private InheritancefreeSettings inheritancefree;
 
     @Override
