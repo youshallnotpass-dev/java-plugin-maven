@@ -84,6 +84,13 @@
           <editable>false</editable>
           <description>NoMultipleReturn inspection settings</description>
         </parameter>
+        <parameter>
+          <name>inheritancefree</name>
+          <type>com.iwillfailyou.inspections.InheritancefreeSettings</type>
+          <required>false</required>
+          <editable>false</editable>
+          <description>InheritanceFree inspection settings</description>
+        </parameter>
       </parameters>
       <configuration>
         <baseDir implementation="java.io.File">
@@ -99,6 +106,7 @@
         <allpublic implementation="com.iwillfailyou.inspections.AllpublicSettings"/>
         <setterfree implementation="com.iwillfailyou.inspections.SetterFreeSettings"/>
         <nomultiplereturn implementation="com.iwillfailyou.inspections.NoMultipleReturnSettings"/>
+        <nomultiplereturn implementation="com.iwillfailyou.inspections.InheritancefreeSettings"/>
       </configuration>
     </mojo>
   </mojos>
