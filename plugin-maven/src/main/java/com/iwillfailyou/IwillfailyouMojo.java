@@ -16,10 +16,6 @@ import com.iwillfailyou.plugin.PublicInspection;
 import com.nikialeksey.goo.Goo;
 import com.nikialeksey.goo.GooException;
 import com.nikialeksey.goo.Origin;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
@@ -27,6 +23,11 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.cactoos.func.SolidFunc;
 import org.cactoos.list.ListOf;
 import org.cactoos.list.Mapped;
+
+import javax.annotation.Nullable;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 @Mojo(name = "iwillfailyou", threadSafe = true)
 public final class IwillfailyouMojo extends AbstractMojo {
@@ -97,21 +98,21 @@ public final class IwillfailyouMojo extends AbstractMojo {
         }
 
         final List<InspectionSettings> inspectionSettings = new ListOf<>(
-            nullfree,
-            staticfree,
-            allfinal,
-            allpublic,
-            setterfree,
-            nomultiplereturn,
-            inheritancefree
+                nullfree,
+                staticfree,
+                allfinal,
+                allpublic,
+                setterfree,
+                nomultiplereturn,
+                inheritancefree
         );
 
         for (final InspectionSettings inspectionSetting : inspectionSettings) {
             inspectionSetting.inheritExclude(exclude);
         }
         final List<Inspection> inspections = new Mapped<>(
-            new SolidFunc<>(InspectionSettings::inspection),
-            inspectionSettings
+                new SolidFunc<>(InspectionSettings::inspection),
+                inspectionSettings
         );
         try {
             final List<Inspection> wrapped;
@@ -120,38 +121,38 @@ public final class IwillfailyouMojo extends AbstractMojo {
             } else {
                 try {
                     final Origin origin = new Goo(
-                        new File(baseDir, ".git")
+                            new File(baseDir, ".git")
                     ).origin();
                     wrapped = new ArrayList<>();
                     for (final Inspection inspection : inspections) {
                         wrapped.add(
-                            new PublicInspection(
-                                new IwfyUrls(
-                                    origin,
-                                    "https://www.iwillfailyou.com"
-                                ),
-                                inspection
-                            )
+                                new PublicInspection(
+                                        new IwfyUrls(
+                                                origin,
+                                                "https://www.iwillfailyou.com"
+                                        ),
+                                        inspection
+                                )
                         );
                     }
                 } catch (final GooException e) {
                     throw new IwfyException(
-                        "Could not get the origin for git repo. You can " +
-                            "use offline version, if you have not git " +
-                            "repo yet, just set the <offline>true</offline>",
-                        e
+                            "Could not get the origin for git repo. You can " +
+                                    "use offline version, if you have not git " +
+                                    "repo yet, just set the <offline>true</offline>",
+                            e
                     );
                 }
             }
             new IwfyPlugin(
-                new MavenUi(getLog()),
-                baseDir,
-                wrapped
+                    new MavenUi(getLog()),
+                    baseDir,
+                    wrapped
             ).run();
         } catch (final IwfyException e) {
             throw new MojoExecutionException(
-                "Can not make the iwillfailyou analysis.",
-                e
+                    "Can not make the iwillfailyou analysis.",
+                    e
             );
         }
     }
