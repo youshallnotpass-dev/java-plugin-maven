@@ -106,7 +106,7 @@
         <allpublic implementation="com.iwillfailyou.inspections.AllpublicSettings"/>
         <setterfree implementation="com.iwillfailyou.inspections.SetterFreeSettings"/>
         <nomultiplereturn implementation="com.iwillfailyou.inspections.NoMultipleReturnSettings"/>
-        <nomultiplereturn implementation="com.iwillfailyou.inspections.InheritancefreeSettings"/>
+        <inheritancefree implementation="com.iwillfailyou.inspections.InheritancefreeSettings"/>
       </configuration>
     </mojo>
   </mojos>
