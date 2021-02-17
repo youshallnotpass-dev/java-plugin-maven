@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Mojo(name = "iwillfailyou", threadSafe = true)
+@SuppressWarnings("inheritancefree")
 public final class IwillfailyouMojo extends AbstractMojo {
 
     @Parameter(readonly = true, defaultValue = "${project.basedir}")
