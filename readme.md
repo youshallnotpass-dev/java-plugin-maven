@@ -15,6 +15,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/youshallnotpass-dev/java-plugin-maven/blob/master/LICENSE)
 
+## Publish to maven central
+```bash
+./gradlew build sign publish closeAndReleaseRepository
+```
+
 ## Changelog
 
 - `0.6.0` rebrand from `com.iwillfailyou` to `dev.youshallnotpass`
