@@ -1,20 +1,20 @@
-package com.iwillfailyou.inspections;
+package dev.youshallnotpass.inspections;
 
-import com.iwillfailyou.inspections.allpublic.Allpublic;
-import com.iwillfailyou.plugin.Inspection;
+import dev.youshallnotpass.inspections.setterfree.SetterFree;
+import dev.youshallnotpass.plugin.Inspection;
 
 import java.util.List;
 
-public final class AllpublicSettings implements InspectionSettings {
+public final class SetterFreeSettings implements InspectionSettings {
     private final CommonSettings common;
 
-    public AllpublicSettings() {
+    public SetterFreeSettings() {
         this(
             new CommonSettings()
         );
     }
 
-    public AllpublicSettings(
+    public SetterFreeSettings(
         final CommonSettings common
     ) {
         this.common = common;
@@ -46,7 +46,7 @@ public final class AllpublicSettings implements InspectionSettings {
         if (common.getDisabled()) {
             inspection = new Inspection.Fake();
         } else {
-            inspection = new Allpublic(
+            inspection = new SetterFree(
                 common.mask(),
                 common.getThreshold()
             );

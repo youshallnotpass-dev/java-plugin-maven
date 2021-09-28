@@ -1,6 +1,6 @@
-package com.iwillfailyou;
+package dev.youshallnotpass;
 
-import com.iwillfailyou.plugin.Ui;
+import dev.youshallnotpass.plugin.Ui;
 import org.apache.maven.plugin.logging.Log;
 
 public final class MavenUi implements Ui {

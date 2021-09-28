@@ -1,8 +1,8 @@
 plugins {
-    id 'com.iwillfailyou' version '0.5.0'
+    id 'dev.youshallnotpass' version '0.6.1'
 }
 
-iwillfailyou {
+youshallnotpass {
     nullfree {
         skipComparisons = true
     }
@@ -10,7 +10,7 @@ iwillfailyou {
 
 allprojects {
     ext {
-        group = 'com.iwillfailyou'
+        group = 'dev.youshallnotpass'
     }
     repositories {
         mavenCentral()

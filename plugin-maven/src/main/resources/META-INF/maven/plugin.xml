@@ -1,14 +1,14 @@
 <plugin>
-  <description>Iwillfailyou - is the plugin for failing not elegant projects</description>
-  <groupId>com.iwillfailyou</groupId>
-  <artifactId>iwillfailyou-maven-plugin</artifactId>
-  <version>0.5.0</version>
-  <goalPrefix>iwillfailyou</goalPrefix>
+  <description>Youshallnotpass - is the plugin for failing not elegant projects</description>
+  <groupId>dev.youshallnotpass</groupId>
+  <artifactId>youshallnotpass-maven-plugin</artifactId>
+  <version>0.6.0</version>
+  <goalPrefix>youshallnotpass</goalPrefix>
   <inheritedByDefault>true</inheritedByDefault>
   <mojos>
     <mojo>
-      <goal>iwillfailyou</goal>
-      <description>Iwillfailyou check</description>
+      <goal>youshallnotpass</goal>
+      <description>Youshallnotpass check</description>
       <requiresDirectInvocation>true</requiresDirectInvocation>
       <requiresProject>true</requiresProject>
       <requiresReports>false</requiresReports>
@@ -16,7 +16,7 @@
       <requiresOnline>false</requiresOnline>
       <inheritedByDefault>true</inheritedByDefault>
       <phase>package</phase>
-      <implementation>com.iwillfailyou.IwillfailyouMojo</implementation>
+      <implementation>dev.youshallnotpass.YoushallnotpassMojo</implementation>
       <language>java</language>
       <instantiationStrategy>per-lookup</instantiationStrategy>
       <executionStrategy>once-per-session</executionStrategy>
@@ -44,49 +44,49 @@
         </parameter>
         <parameter>
           <name>nullfree</name>
-          <type>com.iwillfailyou.inspections.NullfreeSettings</type>
+          <type>dev.youshallnotpass.inspections.NullfreeSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>Nullfree inspection settings</description>
         </parameter>
         <parameter>
           <name>staticfree</name>
-          <type>com.iwillfailyou.inspections.StaticfreeSettings</type>
+          <type>dev.youshallnotpass.inspections.StaticfreeSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>Staticfree inspection settings</description>
         </parameter>
         <parameter>
           <name>allfinal</name>
-          <type>com.iwillfailyou.inspections.AllfinalSettings</type>
+          <type>dev.youshallnotpass.inspections.AllfinalSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>Allfinal inspection settings</description>
         </parameter>
         <parameter>
           <name>allpublic</name>
-          <type>com.iwillfailyou.inspections.AllpublicSettings</type>
+          <type>dev.youshallnotpass.inspections.AllpublicSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>Allpublic inspection settings</description>
         </parameter>
         <parameter>
           <name>setterfree</name>
-          <type>com.iwillfailyou.inspections.SetterFreeSettings</type>
+          <type>dev.youshallnotpass.inspections.SetterFreeSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>SetterFree inspection settings</description>
         </parameter>
         <parameter>
           <name>nomultiplereturn</name>
-          <type>com.iwillfailyou.inspections.NoMultipleReturnSettings</type>
+          <type>dev.youshallnotpass.inspections.NoMultipleReturnSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>NoMultipleReturn inspection settings</description>
         </parameter>
         <parameter>
           <name>inheritancefree</name>
-          <type>com.iwillfailyou.inspections.InheritancefreeSettings</type>
+          <type>dev.youshallnotpass.inspections.InheritancefreeSettings</type>
           <required>false</required>
           <editable>false</editable>
           <description>InheritanceFree inspection settings</description>
@@ -100,26 +100,21 @@
           false
         </offline>
         <exclude implementation="java.util.ArrayList"/>
-        <nullfree implementation="com.iwillfailyou.inspections.NullfreeSettings"/>
-        <staticfree implementation="com.iwillfailyou.inspections.StaticfreeSettings"/>
-        <allfinal implementation="com.iwillfailyou.inspections.AllfinalSettings"/>
-        <allpublic implementation="com.iwillfailyou.inspections.AllpublicSettings"/>
-        <setterfree implementation="com.iwillfailyou.inspections.SetterFreeSettings"/>
-        <nomultiplereturn implementation="com.iwillfailyou.inspections.NoMultipleReturnSettings"/>
-        <inheritancefree implementation="com.iwillfailyou.inspections.InheritancefreeSettings"/>
+        <nullfree implementation="dev.youshallnotpass.inspections.NullfreeSettings"/>
+        <staticfree implementation="dev.youshallnotpass.inspections.StaticfreeSettings"/>
+        <allfinal implementation="dev.youshallnotpass.inspections.AllfinalSettings"/>
+        <allpublic implementation="dev.youshallnotpass.inspections.AllpublicSettings"/>
+        <setterfree implementation="dev.youshallnotpass.inspections.SetterFreeSettings"/>
+        <nomultiplereturn implementation="dev.youshallnotpass.inspections.NoMultipleReturnSettings"/>
+        <inheritancefree implementation="dev.youshallnotpass.inspections.InheritancefreeSettings"/>
       </configuration>
     </mojo>
   </mojos>
   <dependencies>
     <dependency>
-      <groupId>com.iwillfailyou</groupId>
-      <artifactId>java-plugin</artifactId>
-      <version>0.0.4</version>
-    </dependency>
-    <dependency>
-      <groupId>com.iwillfailyou</groupId>
+      <groupId>dev.youshallnotpass</groupId>
       <artifactId>java-inspections</artifactId>
-      <version>0.8.1</version>
+      <version>0.9.5</version>
     </dependency>
   </dependencies>
 </plugin>

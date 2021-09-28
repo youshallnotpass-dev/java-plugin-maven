@@ -1,7 +1,7 @@
-package com.iwillfailyou.inspections;
+package dev.youshallnotpass.inspections;
 
-import com.iwillfailyou.inspections.allfinal.Allfinal;
-import com.iwillfailyou.plugin.Inspection;
+import dev.youshallnotpass.inspections.allfinal.Allfinal;
+import dev.youshallnotpass.plugin.Inspection;
 
 import java.util.Arrays;
 import java.util.List;

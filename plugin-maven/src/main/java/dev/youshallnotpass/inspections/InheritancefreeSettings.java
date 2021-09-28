@@ -1,20 +1,20 @@
-package com.iwillfailyou.inspections;
+package dev.youshallnotpass.inspections;
 
-import com.iwillfailyou.inspections.staticfree.Staticfree;
-import com.iwillfailyou.plugin.Inspection;
+import dev.youshallnotpass.inspections.inheritancefree.Inheritancefree;
+import dev.youshallnotpass.plugin.Inspection;
 
 import java.util.List;
 
-public final class StaticfreeSettings implements InspectionSettings {
+public final class InheritancefreeSettings implements InspectionSettings {
     private final CommonSettings common;
 
-    public StaticfreeSettings() {
+    public InheritancefreeSettings() {
         this(
             new CommonSettings()
         );
     }
 
-    public StaticfreeSettings(
+    public InheritancefreeSettings(
         final CommonSettings common
     ) {
         this.common = common;
@@ -46,7 +46,7 @@ public final class StaticfreeSettings implements InspectionSettings {
         if (common.getDisabled()) {
             inspection = new Inspection.Fake();
         } else {
-            inspection = new Staticfree(
+            inspection = new Inheritancefree(
                 common.mask(),
                 common.getThreshold()
             );
