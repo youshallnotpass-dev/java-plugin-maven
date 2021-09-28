@@ -1,18 +1,20 @@
-# Nullfree
+# Youshallnotpass maven plugin 
 
 ![Elegant Objects Respected Here](https://www.elegantobjects.org/badge.svg)
 
-![nullfree status](https://iwillfailyou.com/nullfree/iwillfailyou/java-plugin-maven)
-![staticfree status](https://iwillfailyou.com/staticfree/iwillfailyou/java-plugin-maven)
-![allfinal status](https://iwillfailyou.com/allfinal/iwillfailyou/java-plugin-maven)
-![allpublic status](https://iwillfailyou.com/allpublic/iwillfailyou/java-plugin-maven)
-![staticfree status](https://iwillfailyou.com/staticfree/iwillfailyou/java-plugin-maven)
-![nomultiplereturn status](https://iwillfailyou.com/nomultiplereturn/iwillfailyou/java-plugin-maven)
+![nullfree status](https://youshallnotpass.dev/nullfree/youshallnotpass-dev/java-plugin-maven)
+![staticfree status](https://youshallnotpass.dev/staticfree/youshallnotpass-dev/java-plugin-maven)
+![allfinal status](https://youshallnotpass.dev/allfinal/youshallnotpass-dev/java-plugin-maven)
+![allpublic status](https://youshallnotpass.dev/allpublic/youshallnotpass-dev/java-plugin-maven)
+![staticfree status](https://youshallnotpass.dev/staticfree/youshallnotpass-dev/java-plugin-maven)
+![nomultiplereturn status](https://youshallnotpass.dev/nomultiplereturn/youshallnotpass-dev/java-plugin-maven)
 
-[![Maven plugin version](https://img.shields.io/maven-central/v/com.iwillfailyou/iwillfailyou-maven-plugin.svg?label=maven-plugin)](https://maven-badges.herokuapp.com/maven-central/com.iwillfailyou/iwillfailyou-maven-plugin)
-[![Build Status](https://travis-ci.org/iwillfailyou/java-plugin-maven.svg?branch=master)](https://travis-ci.org/iwillfailyou/java-plugin-maven)
-[![codecov](https://codecov.io/gh/iwillfailyou/java-plugin-maven/branch/master/graph/badge.svg)](https://codecov.io/gh/iwillfailyou/java-plugin-maven)
+[![Maven plugin version](https://img.shields.io/maven-central/v/dev.youshallnotpass/youshallnotpass-maven-plugin.svg?label=maven-plugin)](https://maven-badges.herokuapp.com/maven-central/dev.youshallnotpass/youshallnotpass-maven-plugin)
+[![Build Status](https://travis-ci.org/youshallnotpass-dev/java-plugin-maven.svg?branch=master)](https://travis-ci.org/youshallnotpass-dev/java-plugin-maven)
+[![codecov](https://codecov.io/gh/youshallnotpass-dev/java-plugin-maven/branch/master/graph/badge.svg)](https://codecov.io/gh/youshallnotpass-dev/java-plugin-maven)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/iwillfailyou/java-plugin-maven/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/youshallnotpass-dev/java-plugin-maven/blob/master/LICENSE)
 
+## Changelog
 
+- `0.6.0` rebrand from `com.iwillfailyou` to `dev.youshallnotpass`

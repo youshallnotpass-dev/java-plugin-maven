@@ -1,7 +1,7 @@
-package com.iwillfailyou.inspections;
+package dev.youshallnotpass.inspections;
 
-import com.iwillfailyou.inspections.nomultiplereturn.NoMultipleReturn;
-import com.iwillfailyou.plugin.Inspection;
+import dev.youshallnotpass.inspections.nomultiplereturn.NoMultipleReturn;
+import dev.youshallnotpass.plugin.Inspection;
 
 import java.util.List;
 

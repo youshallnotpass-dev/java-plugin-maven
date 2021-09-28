@@ -1,9 +1,9 @@
-package com.iwillfailyou.inspections;
+package dev.youshallnotpass.inspections;
 
-import com.iwillfailyou.inspection.sources.ExcludeSourceMask;
-import com.iwillfailyou.inspection.sources.PathSourceMask;
-import com.iwillfailyou.inspection.sources.SourceMask;
-import com.iwillfailyou.inspection.sources.java.JavaSourceMask;
+import dev.youshallnotpass.inspection.sources.ExcludeSourceMask;
+import dev.youshallnotpass.inspection.sources.PathSourceMask;
+import dev.youshallnotpass.inspection.sources.SourceMask;
+import dev.youshallnotpass.inspection.sources.java.JavaSourceMask;
 
 import java.util.ArrayList;
 import java.util.List;

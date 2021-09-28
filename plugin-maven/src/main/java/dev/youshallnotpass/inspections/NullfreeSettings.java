@@ -1,23 +1,28 @@
-package com.iwillfailyou.inspections;
+package dev.youshallnotpass.inspections;
 
-import com.iwillfailyou.inspections.setterfree.SetterFree;
-import com.iwillfailyou.plugin.Inspection;
+import dev.youshallnotpass.inspections.nullfree.Nullfree;
+import dev.youshallnotpass.plugin.Inspection;
 
+import java.util.Arrays;
 import java.util.List;
 
-public final class SetterFreeSettings implements InspectionSettings {
+public final class NullfreeSettings implements InspectionSettings {
     private final CommonSettings common;
+    private final List<Boolean> skipComparisons;
 
-    public SetterFreeSettings() {
+    public NullfreeSettings() {
         this(
-            new CommonSettings()
+            new CommonSettings(),
+            Arrays.asList(false)
         );
     }
 
-    public SetterFreeSettings(
-        final CommonSettings common
+    public NullfreeSettings(
+        final CommonSettings common,
+        final List<Boolean> skipComparisons
     ) {
         this.common = common;
+        this.skipComparisons = skipComparisons;
     }
 
     @Override
@@ -40,14 +45,19 @@ public final class SetterFreeSettings implements InspectionSettings {
         this.common.setThreshold(threshold);
     }
 
+    public void setSkipComparisons(final boolean skipComparisons) {
+        this.skipComparisons.set(0, skipComparisons);
+    }
+
     @Override
     public Inspection inspection() {
         final Inspection inspection;
         if (common.getDisabled()) {
             inspection = new Inspection.Fake();
         } else {
-            inspection = new SetterFree(
+            inspection = new Nullfree(
                 common.mask(),
+                skipComparisons.get(0),
                 common.getThreshold()
             );
         }
